@@ -1,0 +1,425 @@
+﻿<Ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.blizzard.com/wow/ui/">
+	<Script file="Frame.lua" />
+	<Frame name="frmL4" parent="UIParent" toplevel="true" movable="true" enableMouse="true">
+		<Size>
+			<AbsDimension x="315" y="228" />
+		</Size>
+		<Anchors>
+			<Anchor point="CENTER">
+				<Offset x="30" y="92" />
+			</Anchor>
+		</Anchors>
+		<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+			<BackgroundInsets>
+				<AbsInset left="11" right="12" top="12" bottom="11" />
+			</BackgroundInsets>
+			<TileSize>
+				<AbsValue val="32" />
+			</TileSize>
+			<EdgeSize>
+				<AbsValue val="32" />
+			</EdgeSize>
+		</Backdrop>
+		<Layers>
+			<Layer>
+				<Texture name="Texture1" file="Interface\ICONS\INV_Shield_36">
+					<Size>
+						<AbsDimension x="45" y="45" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="30" y="-53" />
+						</Anchor>
+					</Anchors>
+				</Texture>
+				<Texture name="Texture2" file="Interface\Icons\Spell_Holy_Heal">
+					<Size>
+						<AbsDimension x="45" y="45" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="81" y="-53" />
+						</Anchor>
+					</Anchors>
+				</Texture>
+				<Texture name="Texture3" file="Interface\Icons\Ability_MeleeDamage">
+					<Size>
+						<AbsDimension x="45" y="45" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="132" y="-53" />
+						</Anchor>
+					</Anchors>
+				</Texture>
+				<Texture name="Texture4" file="Interface\Icons\Ability_MeleeDamage">
+					<Size>
+						<AbsDimension x="45" y="45" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="183" y="-53" />
+						</Anchor>
+					</Anchors>
+				</Texture>
+				<Texture name="Texture5" file="Interface\Icons\Ability_MeleeDamage">
+					<Size>
+						<AbsDimension x="45" y="45" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="234" y="-53" />
+						</Anchor>
+					</Anchors>
+				</Texture>
+			</Layer>
+			<Layer level="OVERLAY">
+				<FontString name="fontString1" inherits="GameFontNormal" text="Dungeon:">
+					<Size>
+						<AbsDimension x="80" y="20" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="30" y="-145" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="FontString2" inherits="GameFontNormal" text="Looking For">
+					<Size>
+						<AbsDimension x="137" y="20" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="88" y="-22" />
+						</Anchor>
+					</Anchors>
+					<FontHeight>
+						<AbsValue val="20" />
+					</FontHeight>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Button name="btnSearch" inherits="UIPanelButtonTemplate" text="Suche">
+				<Size>
+					<AbsDimension x="159" y="33" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="88" y="-176" />
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						btnSearch_OnClick();
+					</OnClick>
+				</Scripts>
+			</Button>
+			<CheckButton name="chkTank" inherits="UICheckButtonTemplate" text="">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="35" y="-103" />
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						chkTank_OnClick();
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="chkHeal" inherits="UICheckButtonTemplate" text="">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="88" y="-104" />
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						chkHeal_OnClick();
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="chkDD1" inherits="UICheckButtonTemplate" text="">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="141" y="-104" />
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						chkDD1_OnClick();
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="chkDD2" inherits="UICheckButtonTemplate" text="">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="193" y="-104" />
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						chkDD2_OnClick();
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="chkDD3" inherits="UICheckButtonTemplate" text="">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="245" y="-103" />
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						chkDD3_OnClick();
+					</OnClick>
+					<OnEvent>
+						chkDD3_OnEvent();
+					</OnEvent>
+				</Scripts>
+			</CheckButton>
+			<EditBox name="inputDungeon" inherits="InputBoxTemplate" autoFocus="false">
+				<Size>
+					<AbsDimension x="147" y="28" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="130" y="-142" />
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnEnterPressed>
+						inputDungeon_OnEnterPressed()
+					</OnEnterPressed>
+					<OnEscapePressed>
+						inputDungeon_OnEscapePressed()
+					</OnEscapePressed>
+					<OnMouseDown>
+						inputDungeon_OnMouseDown()
+					</OnMouseDown>
+					<OnKeyDown>
+						inputDungeon_OnKeyDown()
+					</OnKeyDown>
+				</Scripts>
+			</EditBox>
+			<Button name="btnClose" inherits="UIPanelButtonTemplate" text="X">
+				<Size>
+					<AbsDimension x="27" y="23" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="275" y="-9" />
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						BtnClose_OnClick();
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="btnInfo" inherits="UIPanelButtonTemplate" text="i">
+				<Size>
+					<AbsDimension x="27" y="23" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="250" y="-9" />
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						btnInfo_OnClick();
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="btnDebug" inherits="UIPanelButtonTemplate" text="debug">
+				<Size>
+					<AbsDimension x="62" y="23" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="20" y="-176" />
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						btnDebug_OnClick();
+					</OnClick>
+				</Scripts>
+			</Button>
+		</Frames>
+		<Scripts>
+			<OnEvent>
+				frmL4_OnEvent()
+			</OnEvent>
+			<OnLoad>
+				self:RegisterForDrag("LeftButton");
+			</OnLoad>
+			<OnDragStop>
+				self:StopMovingOrSizing();
+			</OnDragStop>
+			<OnUpdate>
+				frmL4_OnUpdate()
+			</OnUpdate>
+			<OnDragStart>
+				self:StartMoving();
+			</OnDragStart>
+		</Scripts>
+	</Frame>
+	<Button name="MinimapButton" parent="Minimap" movable="true" enableMouse="true">
+		<Size>
+			<AbsDimension x="33" y="33" />
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT" />
+		</Anchors>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="MinimapButton_Icon" file="Interface\LFGFrame\BattlenetWorking0">
+					<Size>
+						<AbsDimension x="41" y="42" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="-4" y="5" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+			</Layer>
+			<Layer level="OVERLAY">
+				<Texture file="Interface\Minimap\MiniMap-TrackingBorder">
+					<Size>
+						<AbsDimension x="56" y="56" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" />
+					</Anchors>
+				</Texture>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Frame name="MinimapButton_DraggingFrame" hidden="true">
+				<Scripts>
+					<OnUpdate>
+						MinimapButton_DraggingFrame_OnUpdate()
+					</OnUpdate>
+				</Scripts>
+			</Frame>
+		</Frames>
+		<Scripts>
+			<OnLoad>
+				this:RegisterForClicks("LeftButtonUp","RightButtonUp")
+				this:RegisterForDrag("LeftButton","RightButton")
+			</OnLoad>
+			<OnDragStart>
+				this:LockHighlight()
+				MinimapButton_DraggingFrame:Show()
+			</OnDragStart>
+			<OnDragStop>
+				this:UnlockHighlight()
+				MinimapButton_DraggingFrame:Hide()
+			</OnDragStop>
+			<OnClick>
+				MinimapButton_OnClick()
+			</OnClick>
+		</Scripts>
+		<HighlightTexture file="Interface\Minimap\UI-Minimap-ZoomButton-Highlight" alphaMode="ADD" />
+	</Button>
+	<Frame name="frmInfo" hidden="true" parent="UIParent" toplevel="true" movable="true" enableMouse="true">
+		<Size>
+			<AbsDimension x="320" y="198" />
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT">
+				<Offset x="205" y="-507" />
+			</Anchor>
+		</Anchors>
+		<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+			<BackgroundInsets>
+				<AbsInset left="11" right="12" top="12" bottom="11" />
+			</BackgroundInsets>
+			<TileSize>
+				<AbsValue val="32" />
+			</TileSize>
+			<EdgeSize>
+				<AbsValue val="32" />
+			</EdgeSize>
+		</Backdrop>
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString name="FontString1" inherits="GameFontNormal" text="About Looking For" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="188" y="30" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="58" y="-18" />
+						</Anchor>
+					</Anchors>
+					<FontHeight>
+						<AbsValue val="20" />
+					</FontHeight>
+				</FontString>
+				<FontString name="FontString2" inherits="GameFontNormal" text="Version: 0.2" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="80" y="20" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="58" y="-54" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="FontString3" inherits="GameFontNormal" text="Author: Kashan@B2B" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="140" y="20" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="58" y="-73" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="FontString4" inherits="GameFontNormal" text="Contact: https://github.com/KashanB2B/L4" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="229" y="20" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="58" y="-95" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="FontString5" inherits="GameFontNormal" text="© 2016 Kashan @ back2basics-wow.eu" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="229" y="39" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="58" y="-147" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Button name="btnInfoClose" inherits="UIPanelButtonTemplate" text="X">
+				<Size>
+					<AbsDimension x="27" y="23" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="278" y="-12" />
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						btnInfoClose_OnClick()
+					</OnClick>
+				</Scripts>
+			</Button>
+		</Frames>
+	</Frame>
+</Ui>

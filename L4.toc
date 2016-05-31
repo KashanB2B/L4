@@ -1,0 +1,7 @@
+## Author: KashanB2b
+## Interface: 30000
+## Title: L4
+## Version: 0.2
+## SavedVariablesPerCharacter: roles, frameSettings, minimapSettings
+Frame.lua
+Frame.xml
