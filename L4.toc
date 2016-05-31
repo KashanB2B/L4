@@ -2,6 +2,7 @@
 ## Interface: 30000
 ## Title: L4
 ## Version: 0.2
-## SavedVariablesPerCharacter: roles, frameSettings, minimapSettings
+## SavedVariablesPerCharacter: roles, frameSettings, minimapSettings, DataBase
+Role.lua
 Frame.lua
 Frame.xml

@@ -27,10 +27,22 @@ frameSettings = {
 	offsetY
 }
 
+Tank = Role:new("Paladin", 1, 0)
+Heal = Role:new("Priest", 1, 0)
+RDD = Role:new("Hunter", 1, 0)
+MDD = Role:new("Rouge", 1, 0)
+
+DataBase = {
+	Tank = Tank,
+	Heal = Heal,
+	RDD = RDD,
+	MDD = MDD
+}
+
 -- local variable to check if editbox is in edit mode
 local edit;
 -- just simple things for debugging
-local debug = 0;
+local debug = 1;
 
 -- eventhandling of the main window
 function frmL4_OnEvent(event)
@@ -67,16 +79,21 @@ function frmL4_OnEvent(event)
 			frameSettings.offsetY = yOfs;
 
 		end
+
+		if DataBase == nil then
+			DataBase = {
+				Tank = Tank,
+				Heal = Heal,
+				RDD = RDD,
+				MDD = MDD
+			}
+		end
+
 		self:UnregisterEvent("ADDON_LOADED");
 
 	-- if player logs out do some stuff
 	elseif event == "PLAYER_LOGOUT" then
 		-- save roles to SavedVariablesPerCharacter
-		roles["lfTank"] = chkTank:GetChecked();
-		roles["lfHeal"] = chkHeal:GetChecked();
-		roles["lfDD1"] = chkDD1:GetChecked();
-		roles["lfDD2"] = chkDD2:GetChecked();
-		roles["lfDD3"] = chkDD3:GetChecked();
 
 		point, relativeTo, relativePoint, xOfs, yOfs = MyAddon_Frame1:GetPoint()
 		frameSettings["point"] = point;
@@ -84,40 +101,47 @@ function frmL4_OnEvent(event)
 		frameSettings["relativePoint"] = relativePoint;
 		frameSettings["offsetX"] = xOfs;
 		frameSettings["offsetY"] = yOfs;
+
+		DataBase["Tank"] = Tank;
+		DataBase["Heal"] = Heal;
+		DataBase["RDD"] = RDD;
+		DataBase["MDD"] = MDD;
+
 		self:UnregisterEvent("PLAYER_LOGOUT");
 	end
 	
 end
 
+
+
 -- Checkbox Functions
 function chkTank_OnClick()
-	roles["lfTank"] = chkTank:GetChecked();
+	DataBase["Tank"]["active"] = chkTank:GetChecked();
 end
 
 function chkHeal_OnClick()
-	roles["lfHeal"] = chkHeal:GetChecked();
+	DataBase["Heal"]["active"] = chkHeal:GetChecked();
 end
 
-function chkDD1_OnClick()
-	roles["lfDD1"] = chkDD1:GetChecked();
+function chkRDD_OnClick()
+	DataBase["RDD"]["active"] = chkRDD:GetChecked();
 end
 
-function chkDD2_OnClick()
-	roles["lfDD2"] = chkDD2:GetChecked();
+function chkMDD_OnClick()
+	DataBase["MDD"]["active"] = chkMDD:GetChecked();
 end
 
 function chkDD3_OnClick()
-	roles["lfDD3"] = chkDD3:GetChecked();
+	DataBase["DD3"]["active"] = chkDD3:GetChecked();
 end
 local total = 0;
 
 -- this method is called every frame (60fps = 60/second) and redraws the window
 function frmL4_OnUpdate()
-	chkTank:SetChecked(roles.lfTank);
-	chkHeal:SetChecked(roles.lfHeal);
-	chkDD1:SetChecked(roles.lfDD1);
-	chkDD2:SetChecked(roles.lfDD2);
-	chkDD3:SetChecked(roles.lfDD3);
+	chkTank:SetChecked(DataBase["Tank"]["active"]);
+	chkHeal:SetChecked(DataBase["Heal"]["active"]);
+	chkRDD:SetChecked(DataBase["RDD"]["active"]);
+	chkMDD:SetChecked(DataBase["MDD"]["active"]);
 	MinimapButton_Reposition();
 	-- while the addon is being drawn, set the text of the input field
     if total <= 1 then
@@ -146,19 +170,19 @@ function btnSearch_OnClick()
 		searchString = searchString.." Heal";
 	end
 	-- only one --
-	if chkDD1:GetChecked() == 1 and chkDD2:GetChecked() == nil and chkDD3:GetChecked() == nil then
+	if chkRDD:GetChecked() == 1 and chkMDD:GetChecked() == nil and chkDD3:GetChecked() == nil then
 		searchString = searchString.." DD";
-	elseif chkDD2:GetChecked() == 1 and chkDD1:GetChecked() == nil and chkDD3:GetChecked() == nil then
+	elseif chkMDD:GetChecked() == 1 and chkRDD:GetChecked() == nil and chkDD3:GetChecked() == nil then
 		searchString = searchString.." DD";
-	elseif chkDD3:GetChecked() == 1 and chkDD2:GetChecked() == nil and chkDD1:GetChecked() == nil then
+	elseif chkDD3:GetChecked() == 1 and chkMDD:GetChecked() == nil and chkRDD:GetChecked() == nil then
 		searchString = searchString.." DD";
 	-- two --
-	elseif (chkDD1:GetChecked() == 1 and chkDD2:GetChecked() == 1 and chkDD3:GetChecked() == nil) or
-			(chkDD2:GetChecked() == 1 and chkDD3:GetChecked() == 1 and chkDD1:GetChecked() == nil) or
-			(chkDD1:GetChecked() == 1 and chkDD3:GetChecked() == 1 and chkDD2:GetChecked() == nil) then
+	elseif (chkRDD:GetChecked() == 1 and chkMDD:GetChecked() == 1 and chkDD3:GetChecked() == nil) or
+			(chkMDD:GetChecked() == 1 and chkDD3:GetChecked() == 1 and chkRDD:GetChecked() == nil) or
+			(chkRDD:GetChecked() == 1 and chkDD3:GetChecked() == 1 and chkMDD:GetChecked() == nil) then
 		searchString = searchString.." 2DDs";
 		-- three --
-	elseif (chkDD1:GetChecked() == 1 and chkDD2:GetChecked() and chkDD3:GetChecked() == 1) then
+	elseif (chkRDD:GetChecked() == 1 and chkMDD:GetChecked() and chkDD3:GetChecked() == 1) then
 		searchString = searchString.." 3DDS";
 	end
 	searchString = searchString.." für "..inni.." /w me";
@@ -255,4 +279,19 @@ function btnDebug_OnClick()
 
 end
 
+function btnTank_OnClick()
+	
+end
+	
+	function CheckButton1_OnClick()
+		
+	end
+	
+	function Frame1_OnLoad()
+		
+	end
+	
+	function EditBox3_OnTextChanged()
+		
+	end
 	

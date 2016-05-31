@@ -2,11 +2,11 @@
 	<Script file="Frame.lua" />
 	<Frame name="frmL4" parent="UIParent" toplevel="true" movable="true" enableMouse="true">
 		<Size>
-			<AbsDimension x="315" y="228" />
+			<AbsDimension x="318" y="241" />
 		</Size>
 		<Anchors>
 			<Anchor point="CENTER">
-				<Offset x="30" y="92" />
+				<Offset x="32" y="86" />
 			</Anchor>
 		</Anchors>
 		<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
@@ -20,85 +20,6 @@
 				<AbsValue val="32" />
 			</EdgeSize>
 		</Backdrop>
-		<Layers>
-			<Layer>
-				<Texture name="Texture1" file="Interface\ICONS\INV_Shield_36">
-					<Size>
-						<AbsDimension x="45" y="45" />
-					</Size>
-					<Anchors>
-						<Anchor point="TOPLEFT">
-							<Offset x="30" y="-53" />
-						</Anchor>
-					</Anchors>
-				</Texture>
-				<Texture name="Texture2" file="Interface\Icons\Spell_Holy_Heal">
-					<Size>
-						<AbsDimension x="45" y="45" />
-					</Size>
-					<Anchors>
-						<Anchor point="TOPLEFT">
-							<Offset x="81" y="-53" />
-						</Anchor>
-					</Anchors>
-				</Texture>
-				<Texture name="Texture3" file="Interface\Icons\Ability_MeleeDamage">
-					<Size>
-						<AbsDimension x="45" y="45" />
-					</Size>
-					<Anchors>
-						<Anchor point="TOPLEFT">
-							<Offset x="132" y="-53" />
-						</Anchor>
-					</Anchors>
-				</Texture>
-				<Texture name="Texture4" file="Interface\Icons\Ability_MeleeDamage">
-					<Size>
-						<AbsDimension x="45" y="45" />
-					</Size>
-					<Anchors>
-						<Anchor point="TOPLEFT">
-							<Offset x="183" y="-53" />
-						</Anchor>
-					</Anchors>
-				</Texture>
-				<Texture name="Texture5" file="Interface\Icons\Ability_MeleeDamage">
-					<Size>
-						<AbsDimension x="45" y="45" />
-					</Size>
-					<Anchors>
-						<Anchor point="TOPLEFT">
-							<Offset x="234" y="-53" />
-						</Anchor>
-					</Anchors>
-				</Texture>
-			</Layer>
-			<Layer level="OVERLAY">
-				<FontString name="fontString1" inherits="GameFontNormal" text="Dungeon:">
-					<Size>
-						<AbsDimension x="80" y="20" />
-					</Size>
-					<Anchors>
-						<Anchor point="TOPLEFT">
-							<Offset x="30" y="-145" />
-						</Anchor>
-					</Anchors>
-				</FontString>
-				<FontString name="FontString2" inherits="GameFontNormal" text="Looking For">
-					<Size>
-						<AbsDimension x="137" y="20" />
-					</Size>
-					<Anchors>
-						<Anchor point="TOPLEFT">
-							<Offset x="88" y="-22" />
-						</Anchor>
-					</Anchors>
-					<FontHeight>
-						<AbsValue val="20" />
-					</FontHeight>
-				</FontString>
-			</Layer>
-		</Layers>
 		<Frames>
 			<Button name="btnSearch" inherits="UIPanelButtonTemplate" text="Suche">
 				<Size>
@@ -130,7 +51,7 @@
 			<CheckButton name="chkHeal" inherits="UICheckButtonTemplate" text="">
 				<Anchors>
 					<Anchor point="TOPLEFT">
-						<Offset x="88" y="-104" />
+						<Offset x="109" y="-104" />
 					</Anchor>
 				</Anchors>
 				<Scripts>
@@ -139,43 +60,24 @@
 					</OnClick>
 				</Scripts>
 			</CheckButton>
-			<CheckButton name="chkDD1" inherits="UICheckButtonTemplate" text="">
+			<CheckButton name="chkRDD" inherits="UICheckButtonTemplate" text="">
 				<Anchors>
 					<Anchor point="TOPLEFT">
-						<Offset x="141" y="-104" />
+						<Offset x="176" y="-104" />
 					</Anchor>
 				</Anchors>
 				<Scripts>
-					<OnClick>
-						chkDD1_OnClick();
-					</OnClick>
+					<OnClick>chkRDD_OnClick();</OnClick>
 				</Scripts>
 			</CheckButton>
-			<CheckButton name="chkDD2" inherits="UICheckButtonTemplate" text="">
+			<CheckButton name="chkMDD" inherits="UICheckButtonTemplate" text="">
 				<Anchors>
 					<Anchor point="TOPLEFT">
-						<Offset x="193" y="-104" />
+						<Offset x="240" y="-103" />
 					</Anchor>
 				</Anchors>
 				<Scripts>
-					<OnClick>
-						chkDD2_OnClick();
-					</OnClick>
-				</Scripts>
-			</CheckButton>
-			<CheckButton name="chkDD3" inherits="UICheckButtonTemplate" text="">
-				<Anchors>
-					<Anchor point="TOPLEFT">
-						<Offset x="245" y="-103" />
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						chkDD3_OnClick();
-					</OnClick>
-					<OnEvent>
-						chkDD3_OnEvent();
-					</OnEvent>
+					<OnClick>chkMDD_OnClick();</OnClick>
 				</Scripts>
 			</CheckButton>
 			<EditBox name="inputDungeon" inherits="InputBoxTemplate" autoFocus="false">
@@ -247,7 +149,93 @@
 					</OnClick>
 				</Scripts>
 			</Button>
+			<Button name=" " inherits="UIPanelButtonTemplate" text="Button1">
+				<Size>
+					<AbsDimension x="45" y="45" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="30" y="-52" />
+					</Anchor>
+				</Anchors>
+				<Backdrop>
+					<BorderColor r="1" g="1" b="1" a="0" />
+				</Backdrop>
+				<Scripts>
+					<OnClick>btnTank_OnClick();</OnClick>
+				</Scripts>
+				<NormalTexture file="Interface\Icons\INV_Sword_27" />
+			</Button>
+			<Button name="  " inherits="UIPanelButtonTemplate" text="Button1">
+				<Size>
+					<AbsDimension x="45" y="45" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="102" y="-52" />
+					</Anchor>
+				</Anchors>
+				<Backdrop>
+					<BorderColor r="1" g="1" b="1" a="0" />
+				</Backdrop>
+				<NormalTexture file="Interface\Icons\INV_Staff_30" />
+			</Button>
+			<Button name="   " inherits="UIPanelButtonTemplate" text="Button1">
+				<Size>
+					<AbsDimension x="45" y="45" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="169" y="-53" />
+					</Anchor>
+				</Anchors>
+				<Backdrop>
+					<BorderColor r="1" g="1" b="1" a="0" />
+				</Backdrop>
+				<NormalTexture file="Interface\Icons\INV_Staff_13" />
+			</Button>
+			<Button name="    " inherits="UIPanelButtonTemplate" text="Button1">
+				<Size>
+					<AbsDimension x="45" y="45" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="235" y="-53" />
+					</Anchor>
+				</Anchors>
+				<Backdrop>
+					<BorderColor r="1" g="1" b="1" a="0" />
+				</Backdrop>
+				<NormalTexture file="Interface\Icons\INV_throwingknife_04" />
+			</Button>
 		</Frames>
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString name="fontString1" inherits="GameFontNormal" text="Dungeon:">
+					<Size>
+						<AbsDimension x="80" y="20" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="30" y="-145" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="FontString2" inherits="GameFontNormal" text="Looking For">
+					<Size>
+						<AbsDimension x="137" y="20" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="88" y="-22" />
+						</Anchor>
+					</Anchors>
+					<FontHeight>
+						<AbsValue val="20" />
+					</FontHeight>
+				</FontString>
+			</Layer>
+		</Layers>
 		<Scripts>
 			<OnEvent>
 				frmL4_OnEvent()
@@ -273,6 +261,15 @@
 		<Anchors>
 			<Anchor point="TOPLEFT" />
 		</Anchors>
+		<Frames>
+			<Frame name="MinimapButton_DraggingFrame" hidden="true">
+				<Scripts>
+					<OnUpdate>
+						MinimapButton_DraggingFrame_OnUpdate()
+					</OnUpdate>
+				</Scripts>
+			</Frame>
+		</Frames>
 		<Layers>
 			<Layer level="BACKGROUND">
 				<Texture name="MinimapButton_Icon" file="Interface\LFGFrame\BattlenetWorking0">
@@ -299,15 +296,6 @@
 				</Texture>
 			</Layer>
 		</Layers>
-		<Frames>
-			<Frame name="MinimapButton_DraggingFrame" hidden="true">
-				<Scripts>
-					<OnUpdate>
-						MinimapButton_DraggingFrame_OnUpdate()
-					</OnUpdate>
-				</Scripts>
-			</Frame>
-		</Frames>
 		<Scripts>
 			<OnLoad>
 				this:RegisterForClicks("LeftButtonUp","RightButtonUp")
@@ -347,9 +335,26 @@
 				<AbsValue val="32" />
 			</EdgeSize>
 		</Backdrop>
+		<Frames>
+			<Button name="btnInfoClose" inherits="UIPanelButtonTemplate" text="X">
+				<Size>
+					<AbsDimension x="27" y="23" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="278" y="-12" />
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						btnInfoClose_OnClick()
+					</OnClick>
+				</Scripts>
+			</Button>
+		</Frames>
 		<Layers>
 			<Layer level="OVERLAY">
-				<FontString name="FontString1" inherits="GameFontNormal" text="About Looking For" justifyH="LEFT">
+				<FontString name="FontString1" inherits="GameFontNormal" text="Abot Looking For" justifyH="LEFT">
 					<Size>
 						<AbsDimension x="188" y="30" />
 					</Size>
@@ -372,7 +377,7 @@
 						</Anchor>
 					</Anchors>
 				</FontString>
-				<FontString name="FontString3" inherits="GameFontNormal" text="Author: Kashan@B2B" justifyH="LEFT">
+				<FontString name="FontString3" inherits="GameFontNormal" text="Author: Kendra@B2B" justifyH="LEFT">
 					<Size>
 						<AbsDimension x="140" y="20" />
 					</Size>
@@ -382,7 +387,7 @@
 						</Anchor>
 					</Anchors>
 				</FontString>
-				<FontString name="FontString4" inherits="GameFontNormal" text="Contact: https://github.com/KashanB2B/L4" justifyH="LEFT">
+				<FontString name="FontString4" inherits="GameFontNormal" text="Contact: kendrab2b@gmail.com" justifyH="LEFT">
 					<Size>
 						<AbsDimension x="229" y="20" />
 					</Size>
@@ -392,7 +397,7 @@
 						</Anchor>
 					</Anchors>
 				</FontString>
-				<FontString name="FontString5" inherits="GameFontNormal" text="© 2016 Kashan @ back2basics-wow.eu" justifyH="LEFT">
+				<FontString name="FontString5" inherits="GameFontNormal" text="© 2016 Kendra @ back2basics-wow.eu" justifyH="LEFT">
 					<Size>
 						<AbsDimension x="229" y="39" />
 					</Size>
@@ -404,22 +409,242 @@
 				</FontString>
 			</Layer>
 		</Layers>
+	</Frame>
+	<Frame name="Frame1">
+		<Size>
+			<AbsDimension x="393" y="386" />
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT">
+				<Offset x="123" y="-104" />
+			</Anchor>
+		</Anchors>
+		<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+			<BackgroundInsets>
+				<AbsInset left="11" right="12" top="12" bottom="11" />
+			</BackgroundInsets>
+			<TileSize>
+				<AbsValue val="32" />
+			</TileSize>
+			<EdgeSize>
+				<AbsValue val="32" />
+			</EdgeSize>
+		</Backdrop>
 		<Frames>
-			<Button name="btnInfoClose" inherits="UIPanelButtonTemplate" text="X">
+			<CheckButton name="CheckButton1" inherits="UICheckButtonTemplate" text="CheckButton1">
 				<Size>
-					<AbsDimension x="27" y="23" />
+					<AbsDimension x="23" y="23" />
 				</Size>
 				<Anchors>
 					<Anchor point="TOPLEFT">
-						<Offset x="278" y="-12" />
+						<Offset x="64" y="-122" />
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="OVERLAY">
+						<FontString name="$parentText" inherits="GameFontNormalSmall" bytes="0">
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset x="-18" y="41" />
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnClick>CheckButton1_OnClick();</OnClick>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="CheckButton1" inherits="UICheckButtonTemplate" text="CheckButton1">
+				<Size>
+					<AbsDimension x="23" y="23" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="64" y="-83" />
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="OVERLAY">
+						<FontString name="$parentText" inherits="GameFontNormalSmall" font="Fonts\FRIZQT__.TTF" bytes="0">
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset x="-18" y="41" />
+								</Anchor>
+							</Anchors>
+							<FontHeight>
+								<AbsValue val="10" />
+							</FontHeight>
+							<Color r="1" g="0.82" b="0" />
+							<Shadow>
+								<Offset>
+									<AbsDimension x="1" y="-1" />
+								</Offset>
+								<Color r="0" g="0" b="0" />
+							</Shadow>
+						</FontString>
+					</Layer>
+				</Layers>
+			</CheckButton>
+			<CheckButton name="CheckButton14" inherits="UICheckButtonTemplate" text="CheckButton14">
+				<Size>
+					<AbsDimension x="23" y="23" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="64" y="-162" />
+					</Anchor>
+				</Anchors>
+			</CheckButton>
+			<CheckButton name="CheckButton15" inherits="UICheckButtonTemplate" text="CheckButton15">
+				<Size>
+					<AbsDimension x="23" y="23" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="64" y="-204" />
+					</Anchor>
+				</Anchors>
+			</CheckButton>
+			<CheckButton name="CheckButton16" inherits="UICheckButtonTemplate" text="CheckButton16">
+				<Size>
+					<AbsDimension x="23" y="23" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="64" y="-246" />
+					</Anchor>
+				</Anchors>
+			</CheckButton>
+			<EditBox name="EditBox1" inherits="InputBoxTemplate">
+				<Size>
+					<AbsDimension x="35" y="35" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="102" y="-116" />
+					</Anchor>
+				</Anchors>
+			</EditBox>
+			<EditBox name="EditBox2" inherits="InputBoxTemplate">
+				<Size>
+					<AbsDimension x="35" y="35" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="102" y="-157" />
+					</Anchor>
+				</Anchors>
+			</EditBox>
+			<EditBox name="EditBox3" inherits="InputBoxTemplate">
+				<Size>
+					<AbsDimension x="35" y="35" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="102" y="-199" />
 					</Anchor>
 				</Anchors>
 				<Scripts>
-					<OnClick>
-						btnInfoClose_OnClick()
-					</OnClick>
+					<OnTextChanged>EditBox3_OnTextChanged();</OnTextChanged>
 				</Scripts>
-			</Button>
+			</EditBox>
+			<EditBox name="EditBox4" inherits="InputBoxTemplate">
+				<Size>
+					<AbsDimension x="35" y="35" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="102" y="-241" />
+					</Anchor>
+				</Anchors>
+			</EditBox>
+			<EditBox name="EditBox5" inherits="InputBoxTemplate">
+				<Size>
+					<AbsDimension x="35" y="35" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="102" y="-75" />
+					</Anchor>
+				</Anchors>
+			</EditBox>
 		</Frames>
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString name="FontString24" inherits="GameFontNormal" text="Tanks to Search">
+					<Size>
+						<AbsDimension x="153" y="31" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="13" y="-13" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentText" inherits="GameFontNormalSmall">
+					<Anchors>
+						<Anchor point="LEFT" relativePoint="RIGHT">
+							<Offset x="-2" y="-29" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+			<Layer>
+				<Texture name="Texture4" file="Interface\Icons\INV_Shield_06">
+					<Size>
+						<AbsDimension x="35" y="35" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="23" y="-75" />
+						</Anchor>
+					</Anchors>
+				</Texture>
+				<Texture name="Texture5" file="Interface\Icons\ability_thunderbolt">
+					<Size>
+						<AbsDimension x="35" y="35" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="23" y="-116" />
+						</Anchor>
+					</Anchors>
+				</Texture>
+				<Texture name="Texture6" file="Interface\Icons\inv_staff_13">
+					<Size>
+						<AbsDimension x="35" y="35" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="23" y="-157" />
+						</Anchor>
+					</Anchors>
+				</Texture>
+				<Texture name="Texture7" file="Interface\Icons\spell_nature_drowsy">
+					<Size>
+						<AbsDimension x="35" y="35" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="23" y="-241" />
+						</Anchor>
+					</Anchors>
+				</Texture>
+				<Texture name="Texture8" file="Interface\Icons\inv_misc_monsterclaw_04">
+					<Size>
+						<AbsDimension x="35" y="35" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="23" y="-198" />
+						</Anchor>
+					</Anchors>
+				</Texture>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>Frame1_OnLoad();</OnLoad>
+		</Scripts>
 	</Frame>
 </Ui>
